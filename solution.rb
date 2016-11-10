@@ -60,7 +60,6 @@ end
 
 
 words = WordSequences.new(ARGV[0])
-puts words.questions.inspect
 
 words.questions_file('questions.txt')
 

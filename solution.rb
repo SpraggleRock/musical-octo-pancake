@@ -8,8 +8,8 @@ class WordSequences
   end
 
   def parse_input_file(filepath)
-    File.open(filepath).each_line do |file_string|
-      collect_words(file_string)
+    File.open(filepath).each_line do |word|
+      collect_words(word.chomp)
     end
   end
 
@@ -61,10 +61,10 @@ end
 
 words = WordSequences.new(ARGV[0])
 puts words.words.inspect
-puts words.questions
-words.questions_file
+puts words.questions.inspect
+# words.questions_file
 
-words.answers_file
+# words.answers_file
 
 #### basic tests ##### TODO - convert requirements to minitest
 # words = WordSequences.new("arrows carrots give me")

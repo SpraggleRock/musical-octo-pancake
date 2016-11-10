@@ -26,12 +26,16 @@ class WordSequences
     end
   end
 
+  def word_hash
+    @word_hash || @word_hash = parse_words
+  end
+
   def questions
-    "carr give rots rows rrot rrow"
+    self.word_hash.keys.sort
   end
 
   def answers
-    "carrots give carrots arrows carrots arrows"
+    self.questions.map{|q| @word_hash[q]}
   end
 
 

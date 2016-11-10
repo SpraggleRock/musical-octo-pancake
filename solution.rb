@@ -1,10 +1,23 @@
 class WordSequences
 
-  def initialize(words)
-    @words = words.split(/\s/)
+  attr_accessor :words
+
+  def initialize(filepath)
+    parse_input_file(filepath)
   end
 
-  def parse_words
+  def parse_input_file(filepath)
+    File.open(filepath).each_line do |file_string|
+      collect_words(file_string.to_s.split(/\s/))
+    end
+  end
+
+  def collect_words(word)
+    @words || @words = []
+    @words << word
+  end
+
+  def chunk_words
     @words.reduce({}) do |word_list, word|
       word_chunks = get_four_letter_sequences(word)
       word_chunks.each do |chunk|
@@ -27,7 +40,7 @@ class WordSequences
   end
 
   def word_hash
-    @word_hash || @word_hash = parse_words
+    @word_hash || @word_hash = chunk_words
   end
 
   def questions
@@ -38,16 +51,18 @@ class WordSequences
     self.questions.map{|q| @word_hash[q]}
   end
 
-
 end
 
 
-#### basic tests #####
-words = WordSequences.new("arrows carrots give me")
+words = WordSequences.new(ARGV[0])
+puts words.words.first
 
-puts words.get_four_letter_sequences("brownie") == ["brow", "rown", "owni", "wnie"]
+#### basic tests ##### TODO - convert requirements to minitest
+# words = WordSequences.new("arrows carrots give me")
 
-puts words.parse_words
+# puts words.get_four_letter_sequences("brownie") == ["brow", "rown", "owni", "wnie"]
 
-puts words.questions == "carr give rots rows rrot rrow"
-puts words.answers == "carrots give carrots arrows carrots arrows"
+# puts words.chunk_words
+
+# puts words.questions == "carr give rots rows rrot rrow"
+# puts words.answers == "carrots give carrots arrows carrots arrows"

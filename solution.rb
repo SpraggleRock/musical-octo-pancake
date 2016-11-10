@@ -1,9 +1,10 @@
 class WordSequences
 
-  attr_accessor :words
+  attr_accessor :words, :word_hash
 
   def initialize(filepath)
     parse_input_file(filepath)
+    @word_hash = chunk_words
   end
 
   def parse_input_file(filepath)
@@ -39,23 +40,31 @@ class WordSequences
     end
   end
 
-  def word_hash
-    @word_hash || @word_hash = chunk_words
-  end
-
   def questions
-    self.word_hash.keys.sort
+    @word_hash.keys.sort
   end
 
   def answers
     self.questions.map{|q| @word_hash[q]}
   end
 
+  def questions_file
+    File.open('questions.txt', 'w+'){|f| f.write(self.questions.join("\n"))}
+  end
+
+  def answers_file
+    File.open('answers.txt', 'w+'){|f| f.write(self.answers.join("\n"))}
+  end
+
 end
 
 
 words = WordSequences.new(ARGV[0])
-puts words.words.first
+puts words.word_hash
+puts words.questions
+words.questions_file
+
+words.answers_file
 
 #### basic tests ##### TODO - convert requirements to minitest
 # words = WordSequences.new("arrows carrots give me")

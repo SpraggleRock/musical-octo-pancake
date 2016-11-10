@@ -9,7 +9,7 @@ class WordSequences
 
   def parse_input_file(filepath)
     File.open(filepath).each_line do |file_string|
-      collect_words(file_string.to_s.split(/\s/))
+      collect_words(file_string)
     end
   end
 
@@ -60,7 +60,7 @@ end
 
 
 words = WordSequences.new(ARGV[0])
-puts words.word_hash
+puts words.words.inspect
 puts words.questions
 words.questions_file
 

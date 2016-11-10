@@ -1,6 +1,3 @@
-
-require 'pry'
-require 'pry-remote'
 class WordSequences
 
   def initialize(words)
@@ -8,12 +5,17 @@ class WordSequences
   end
 
   def parse_words
-    @words.reduce([]) do |word_list, word|
-      new_chunks = get_four_letter_sequences(word)
-      repeated_words = word_list & new_chunks
-      new_words = new_chunks - repeated_words
-      old_words = word_list - repeated_words
-      new_words + old_words
+    @words.reduce({}) do |word_list, word|
+      word_chunks = get_four_letter_sequences(word)
+      word_chunks.each do |chunk|
+        if word_list[chunk]
+          word_list.delete(chunk)
+          next
+        else
+          word_list[chunk] = word
+        end 
+      end
+      word_list
     end
   end
 

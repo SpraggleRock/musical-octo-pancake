@@ -48,23 +48,23 @@ class WordSequences
     self.questions.map{|q| @word_hash[q]}
   end
 
-  def questions_file
-    File.open('questions.txt', 'w+'){|f| f.write(self.questions.join("\n"))}
+  def questions_file(filepath)
+    File.open(filepath, 'w+'){|f| f.write(self.questions.join("\n"))}
   end
 
-  def answers_file
-    File.open('answers.txt', 'w+'){|f| f.write(self.answers.join("\n"))}
+  def answers_file(filepath)
+    File.open(filepath, 'w+'){|f| f.write(self.answers.join("\n"))}
   end
 
 end
 
 
 words = WordSequences.new(ARGV[0])
-puts words.words.inspect
 puts words.questions.inspect
-# words.questions_file
 
-# words.answers_file
+words.questions_file('questions.txt')
+
+words.answers_file('answers.txt')
 
 #### basic tests ##### TODO - convert requirements to minitest
 # words = WordSequences.new("arrows carrots give me")

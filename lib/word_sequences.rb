@@ -57,14 +57,3 @@ class WordSequences
   end
 
 end
-
-
-#### basic tests ##### TODO - convert requirements to minitest
-# words = WordSequences.new("arrows carrots give me")
-
-# puts words.get_four_letter_sequences("brownie") == ["brow", "rown", "owni", "wnie"]
-
-# puts words.chunk_words
-
-# puts words.questions == "carr give rots rows rrot rrow"
-# puts words.answers == "carrots give carrots arrows carrots arrows"

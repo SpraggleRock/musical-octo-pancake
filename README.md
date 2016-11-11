@@ -8,7 +8,7 @@ Say this is your dictionary: arrows carrots give me
 and 'answers' would have: carrots give carrots arrows carrots arrows
 'arro' wouldn't show up in 'questions', because it appears in two words
 
-**Assumption**
+**Assumptions**
 
  - The questions file outputs one 4-letter sequence per line in alphabetical order
 

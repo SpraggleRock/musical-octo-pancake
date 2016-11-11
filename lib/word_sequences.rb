@@ -34,9 +34,9 @@ class WordSequences
   end
 
   def get_letter_sequences(word)
-    sequences = (0..word.length - 4).to_a
-    sequences.map do |sequence|
-      word.slice(sequence, 4)
+    start_positions = (0..word.length - 4).to_a
+    start_positions.map do |start|
+      word.slice(start, 4)
     end
   end
 

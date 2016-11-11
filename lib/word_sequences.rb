@@ -59,12 +59,6 @@ class WordSequences
 end
 
 
-words = WordSequences.new(ARGV[0])
-
-words.questions_file('questions.txt')
-
-words.answers_file('answers.txt')
-
 #### basic tests ##### TODO - convert requirements to minitest
 # words = WordSequences.new("arrows carrots give me")
 

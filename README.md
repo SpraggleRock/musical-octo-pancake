@@ -29,4 +29,4 @@ ruby solution.rb filename
 where filename is the relative path to the source file.
 
 
-The output files will generate in the tmp folder of the project; they are named with a timestamp.  Thus the questions file is 'questions\_20161110203615.txt' and the answers is 'answers\_20161110203615.txt'
+The output files will generate in the tmp folder of the project; they are named with a timestamp (so that the output can be maintained if the program is run for different input files).  Thus the questions file is, for instance, 'questions\_20161110203615.txt' and the answers is 'answers\_20161110203615.txt'.

@@ -20,7 +20,7 @@ class WordSequences
 
   def chunk_words
     @words.reduce({}) do |word_list, word|
-      word_chunks = get_four_letter_sequences(word)
+      word_chunks = get_letter_sequences(word)
       word_chunks.each do |chunk|
         if word_list[chunk]
           word_list.delete(chunk)
@@ -33,7 +33,7 @@ class WordSequences
     end
   end
 
-  def get_four_letter_sequences(word)
+  def get_letter_sequences(word)
     sequences = (0..word.length - 4).to_a
     sequences.map do |sequence|
       word.slice(sequence, 4)

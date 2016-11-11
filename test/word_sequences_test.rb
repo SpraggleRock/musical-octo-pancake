@@ -6,7 +6,7 @@ class WordSequencesTest < Minitest::Test
   def test_the_word_sequences
     words = WordSequences.new('test/test_words.txt')
     expected = ["brow", "rown", "owni", "wnie"]
-    word_sequences = words.get_four_letter_sequences("brownie")
+    word_sequences = words.get_letter_sequences("brownie")
     assert_equal expected, word_sequences
   end
 
